@@ -2,9 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import Swal from 'sweetalert2'
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 
 export const Login = () => {
+
+	const {strore, actions} = useContext(Context)
 
 	const formik = useFormik({
 			initialValues: {
@@ -16,8 +21,26 @@ export const Login = () => {
 				password: Yup.string().min(7, '7 characters').required('Contraseña requerida'),
 				
 			}),
-			onSubmit: values => {
-				alert(JSON.stringify(values, null, 2));
+			onSubmit: async (values) => {
+				console.log(values);
+				
+				const login = await actions.iniciarSesion(values.email, values.password)
+				if(!login.error) {
+					Swal.fire({
+						title: 'Bienvenido!',
+						text: 'Ingresaste satisfactoriamente!',
+						icon: 'success',
+						timer: 2000
+					  })
+					  navigate("/")
+				} else {
+					Swal.fire({
+						title: 'Lo sentimos!',
+						text: 'Ha habido un error!',
+						icon: 'error',
+						timer: 2000
+					  })
+				}
 			},
 		});
 
@@ -61,10 +84,10 @@ export const Login = () => {
 							Inicia sesión con Google
 						</button>
 					</div>
-					<div class="linea-divisoria">
-						<span class="linea"></span>
-						<span class="circulo"></span>
-						<span class="linea"></span>
+					<div className="linea-divisoria">
+						<span className="linea"></span>
+						<span className="circulo"></span>
+						<span className="linea"></span>
 					</div>
 					<div className="p-2">
 						<p className="sign-up-label">

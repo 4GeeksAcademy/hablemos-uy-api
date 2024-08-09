@@ -42,7 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			iniciarSesion: async (email, password) => {
 				try {
-					const response = await axios.post(process.env.BACKEND_URL+'/usuarios', {
+					const response = await axios.get(process.env.BACKEND_URL+'/usuarios', {
 						"correo": email,
 						"clave": password,					
 					})

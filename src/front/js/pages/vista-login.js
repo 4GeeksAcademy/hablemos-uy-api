@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import { Login } from "../component/login.jsx"
 import "../../styles/registro-login.css"
 
 const VistaLogin = () => {
-    const { store, actions } = useContext(Context);
 
     return (
         <div className="container-fluid vh-100 d-flex align-items-center justify-content-center row">
