@@ -8,15 +8,15 @@ const VistaRegister = () => {
 
     return (
         <div className="container-fluid vh-100 d-flex align-items-center justify-content-center row">
-            <div className="row w-100">
-                <div className="col-md-6 d-flex align-items-center justify-content-center rectangle-10">
+            {/* <div className="row w-100"> */}
+                <div className="col-md-8 d-flex align-items-center justify-content-center rectangle-10">
 
                     <Register />
 
                 </div>
             </div>
 
-        </div>
+        // </div>
     );
 };
 export default VistaRegister;
